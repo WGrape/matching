@@ -1,0 +1,74 @@
+app:
+  version: v1.0.0
+  language: go1.16.10
+
+strategy:
+  table:
+    - default:
+        - default
+
+    - gender=0:
+        - gender=1
+        - gender=0
+    - gender=1:
+        - gender=0
+        - gender=1
+    - gender=2:
+        - gender=2
+
+    - age=00:
+        - age=00
+    - age=90:
+        - age=90
+    - age=80:
+        - age=80
+        - age=70
+    - age=70:
+        - age=70
+        - age=60
+    - age=60:
+        - age=60
+        - age=50
+
+    - gender=0;age=00:
+        - gender=1;age=00
+        - gender=0;age=00
+    - gender=0;age=90:
+        - gender=1;age=90
+        - gender=0;age=90
+    - gender=0;age=80:
+        - gender=1;age=80
+        - gender=0;age=80
+    - gender=0;age=70:
+        - gender=1;age=70
+        - gender=0;age=70
+    - gender=0;age=60:
+        - gender=1;age=60
+        - gender=0;age=60
+
+    - gender=1;age=00:
+        - gender=0;age=00
+        - gender=1;age=00
+    - gender=1;age=90:
+        - gender=0;age=90
+        - gender=1;age=90
+    - gender=1;age=80:
+        - gender=0;age=80
+        - gender=1;age=80
+    - gender=1;age=70:
+        - gender=0;age=70
+        - gender=1;age=70
+    - gender=1;age=60:
+        - gender=0;age=60
+        - gender=1;age=60
+
+    - gender=2;age=00:
+        - gender=2;age=00
+    - gender=2;age=90:
+        - gender=2;age=90
+    - gender=2;age=80:
+        - gender=2;age=80
+    - gender=2;age=70:
+        - gender=2;age=70
+    - gender=2;age=60:
+        - gender=2;age=60
