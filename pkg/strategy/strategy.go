@@ -21,13 +21,14 @@ type UseStrategy struct {
 
 // User the struct of user.
 type User struct {
-	// the user basic info.
-	UserId string
-	Score  float32
+	UserId string  // the id of user
+	Score  float32 // the score of heap element
+
+	// the user basic properties.
 	Gender uint8
 	Age    string
 	City   string
-	Status uint8
+	Status uint8 // user status, 0:not exists, 1:exists
 
 	// the features for matching.
 	ImplodePropertiesString string
