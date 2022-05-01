@@ -3,7 +3,7 @@ app:
   language: go1.16.10
 
 strategy:
-  table:
+  rules:
     - default:
         - default
 

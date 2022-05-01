@@ -15,7 +15,7 @@ func TestUseStrategy_AutoCreateStrategy(t *testing.T) {
 		return
 	}
 
-	fmt.Println(strategy.Table)
+	fmt.Println(strategy.Rules)
 }
 
 func TestUseStrategy_ComputeUser(t *testing.T) {

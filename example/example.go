@@ -22,5 +22,7 @@ func main() {
 		Status: 1,
 	}
 	implodePropertiesString, combinationList, matchedCombinationList := st.ComputeUser(user)
-	fmt.Println(implodePropertiesString, combinationList, matchedCombinationList)
+	fmt.Printf("implode the properties to string: %s\n\n", implodePropertiesString)
+	fmt.Printf("get the combination list of properties: %v\n\n", combinationList)
+	fmt.Printf("get the matched combination list of properties: %v\n\n", matchedCombinationList)
 }

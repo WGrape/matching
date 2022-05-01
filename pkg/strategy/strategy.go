@@ -16,7 +16,7 @@ type Config struct {
 
 // UseStrategy the struct of strategy.
 type UseStrategy struct {
-	Table map[string][]string
+	Rules map[string][]string
 }
 
 // User the struct of user.
@@ -54,15 +54,15 @@ func (strategy *UseStrategy) AutoCreateStrategy(configFile string) error {
 		return err
 	}
 
-	strategy.Table = make(map[string][]string)
-	for _, item1 := range config.Strategy["table"].([]interface{}) {
+	strategy.Rules = make(map[string][]string)
+	for _, item1 := range config.Strategy["rules"].([]interface{}) {
 		for key, item2 := range item1.(map[interface{}]interface{}) {
 			for _, item3 := range item2.([]interface{}) {
-				strategy.Table[key.(string)] = append(strategy.Table[key.(string)], item3.(string))
+				strategy.Rules[key.(string)] = append(strategy.Rules[key.(string)], item3.(string))
 			}
 		}
 	}
-	strategy.Table["default"] = []string{"default"}
+	strategy.Rules["default"] = []string{"default"}
 	return nil
 }
 
@@ -70,20 +70,20 @@ func (strategy *UseStrategy) AutoCreateStrategy(configFile string) error {
 // return string: implodePropertiesString, []string: combinationList, []string: matchedCombinationList
 func (strategy *UseStrategy) ComputeUser(user User) (string, []string, []string) {
 	// implode the property to string
-	propertyList := strategy.GetPropertyList(user)
+	propertyList := strategy.getPropertyList(user)
 	implodePropertiesString := strings.Join(propertyList, ";")
 
 	// get the combination list of properties
-	combinationList := strategy.GetCombinationList(propertyList)
+	combinationList := strategy.getCombinationList(propertyList)
 
 	// get the matched combination list of properties
-	matchedCombinationList := strategy.GetMatchedCombinationList(combinationList, user)
+	matchedCombinationList := strategy.getMatchedCombinationList(combinationList, user)
 
 	return implodePropertiesString, combinationList, matchedCombinationList
 }
 
-// GetPropertyList get the property list of user
-func (strategy *UseStrategy) GetPropertyList(user User) []string {
+// getPropertyList get the property list of user
+func (strategy *UseStrategy) getPropertyList(user User) []string {
 	var propertyList []string
 
 	// property of gender
@@ -111,22 +111,22 @@ func (strategy *UseStrategy) GetPropertyList(user User) []string {
 	return propertyList
 }
 
-// GetCombinationList get the combination list of properties
-func (strategy *UseStrategy) GetCombinationList(propertyList []string) []string {
+// getCombinationList get the combination list of properties
+func (strategy *UseStrategy) getCombinationList(propertyList []string) []string {
 	return permute.CombinationAndImplode(propertyList)
 }
 
-// GetMatchedCombinationList get the matched combination list of properties.
-func (strategy *UseStrategy) GetMatchedCombinationList(combinationList []string, user User) []string {
+// getMatchedCombinationList get the matched combination list of properties.
+func (strategy *UseStrategy) getMatchedCombinationList(combinationList []string, user User) []string {
 	var matchedCombinationList []string
 	for _, key := range combinationList {
 		if strings.Contains(key, "city=") {
 			continue
 		}
-		if _, ok := strategy.Table[key]; !ok {
+		if _, ok := strategy.Rules[key]; !ok {
 			continue
 		}
-		matchedCombinationList = append(matchedCombinationList, strategy.Table[key]...)
+		matchedCombinationList = append(matchedCombinationList, strategy.Rules[key]...)
 	}
 
 	var newMatchedCombinationList []string
