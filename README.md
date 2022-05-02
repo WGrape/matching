@@ -1,4 +1,7 @@
 # matching
+
+[![MIT license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](./LICENSE) <img src="https://img.shields.io/badge/language-go-blue.svg">
+
 A general and configurable user matching library based on Go language
 
 ## Overview
@@ -72,7 +75,7 @@ strategy:
 </details>
 
 ### 2、Create strategy object
-Create a strategy object and call ```AutoCreateStrategy```.
+Create a strategy object and call ```AutoCreateStrategy()```.
 
 ```go
 package main
