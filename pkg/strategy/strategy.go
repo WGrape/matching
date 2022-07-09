@@ -2,9 +2,9 @@ package strategy
 
 import (
 	"fmt"
+	"github.com/WGrape/golib/permutation"
 	"gopkg.in/yaml.v2"
 	"io/ioutil"
-	"matching/pkg/permute"
 	"strings"
 )
 
@@ -113,7 +113,7 @@ func (strategy *UseStrategy) getPropertyList(user User) []string {
 
 // getCombinationList get the combination list of properties
 func (strategy *UseStrategy) getCombinationList(propertyList []string) []string {
-	return permute.CombinationAndImplode(propertyList)
+	return permutation.GetCombinationsWithImplode(propertyList, ";")
 }
 
 // getMatchedCombinationList get the matched combination list of properties.
