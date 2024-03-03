@@ -1,3 +1,4 @@
+github.com/WGrape/CIManager v1.3.0/go.mod h1:VCtIzVl/2P4jThMFt5Mal7Iyf/5dxx8U9UTqWtsCWW4=
 github.com/WGrape/golib v1.0.0 h1:i5MZEqS2ZmE42P/3S5j2C91VRciNrXq3+/a4NCe3Dvk=
 github.com/WGrape/golib v1.0.0/go.mod h1:0vDgj7dViHdU+ej8rNeDG8X0SS9nV79zH5cEdlmqOYQ=
 gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405 h1:yhCVgyC4o1eVCa2tZl7eS0r+SDo693bJlVdllGtEeKM=
